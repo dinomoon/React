@@ -34,6 +34,7 @@ export class PhoneInfo extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { info, onUpdate } = this.props;
+    // editing이 false -> true로 바뀌었을 때 (수정 버튼을 클릭했을 때)
     if(!prevState.editing && this.state.editing) {
       this.setState({
         name: info.name,
@@ -41,6 +42,7 @@ export class PhoneInfo extends Component {
       })
     }
 
+    // editing이 true -> false로 바뀌었을 때 (적용 버튼을 클릭했을 때)
     if(prevState.editing && !this.state.editing) {
       onUpdate(info.id, {
         name: this.state.name,
@@ -49,7 +51,19 @@ export class PhoneInfo extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    // 수정 상태가 아니고, info 값이 같다면 리렌더링 안함
+    if (!this.state.editing  
+        && !nextState.editing
+        && nextProps.info === this.props.info) {
+      return false;
+    }
+    // 나머지 경우엔 리렌더링함
+    return true;
+  }
+
   render() {
+    console.log('render PhoneInfo ' + this.props.info.id);
     const style = {
       border: '1px solid #000',
       padding: '8px',
@@ -89,7 +103,7 @@ export class PhoneInfo extends Component {
         <div>{phone}</div>
         <button onClick={this.handleToggleEdit}>수정</button>
         <button onClick={this.handleRemove}>삭제</button>
-      </div>
+      </div>  
     )
   }
 }
