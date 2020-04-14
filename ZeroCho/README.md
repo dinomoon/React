@@ -7,3 +7,6 @@
 
 ### 1-9 함수형 setState
 - setState안에 this.state가 들어간다면 함수형으로 써서 prevState를 사용하자!
+
+### 2-2 Class와 Hooks비교하기
+- 리액트에서는 Hooks를 사용하는 것을 권장한다.
