@@ -1,0 +1,16 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status {
+  margin-bottom: 20px;
+  font-size: 1.6em;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+}
