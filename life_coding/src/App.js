@@ -4,7 +4,6 @@ import React, {Fragment, useState} from 'react';
 import './App.css';
 import Header from './components/Header';
 import TOC from './components/TOC';
-import Content from './components/Content';
 import Control from './components/Control';
 import CreateContent from './components/CreateContent';
 import ReadContent from './components/ReadContent';
@@ -19,12 +18,12 @@ function App() {
     {id: 2, title: 'CSS', desc: 'CSS is...'},
     {id: 3, title: 'JavaScript', desc: 'JavaScript is...'},
   ]);
+  let [maxId, setMaxId] = useState(3);
   // End of State
 
   // getContent
   let getContent = () => {
     let content, article = null;
-    let maxId = 3;
     let i = 0;
     switch (mode) {
       case 'welcome':
@@ -49,8 +48,7 @@ function App() {
       case 'create':
         article = <CreateContent
           onSubmit={(title, desc) => {
-            maxId++;
-            debugger;
+            setMaxId(maxId + 1);
             let _contents = [...contents];
             _contents.push(
               {id: maxId, title: title, desc: desc}
@@ -79,6 +77,21 @@ function App() {
           }}
         />
         break;
+      case 'delete':
+        if (window.confirm("정말 삭제하시겠습니까?")) {
+          let _contents = [...contents];
+          let i = 0;
+          while (i < _contents.length) {
+            if (_contents[i].id === selectedId) {
+              _contents.splice(i, 1);
+              break;
+            }
+            i++;
+          }
+          setContents(_contents);
+          setMode('welcome');
+          setMaxId(maxId - 1);
+        }
     }
     return article;
   }
@@ -100,8 +113,8 @@ function App() {
           }}
         />
         <Control
-          onClick={(a) => {
-            setMode(a);
+          onClick={(mode) => {
+            setMode(mode);
           }}
         />
         {getContent()}

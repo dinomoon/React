@@ -1,4 +1,5 @@
 function Control(props) {
+  console.log("Control");
   return (
     <ul>
       <li>
