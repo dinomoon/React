@@ -13,8 +13,15 @@
     const e = React.createElement;
 
     class LikeButton extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          liked: false,
+        }
+      }
+
       render() {
-        return e('button', { onClick: () => {console.log("Hello")} }, 'Like')
+        return e('button', { onClick: () => {this.setState({liked: true})} }, this.state.liked ? "Liked" : "Like")
       }
     }
   </script>
