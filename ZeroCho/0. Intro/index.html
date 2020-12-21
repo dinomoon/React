@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script>
+    const e = React.createElement;
+
+    class LikeButton extends React.Component {
+      render() {
+        return e('button', { onClick: () => {console.log("Hello")} }, 'Like')
+      }
+    }
+  </script>
+  <script>
+    ReactDOM.render(e(LikeButton), document.querySelector('#root'));
+  </script>
+</body>
+</html>
