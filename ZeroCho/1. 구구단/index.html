@@ -14,21 +14,18 @@
   <div id="root"></div>
   <script type="text/babel">
     class GuGuDan extends React.Component {
-      constructor(props) {
-        super(props);
-        this.state = {
-          num1: Math.ceil(Math.random() * 9),
-          num2: Math.ceil(Math.random() * 9),
-          value: '',
-          result: '',
-        };
-      }
+      state = {
+        num1: Math.ceil(Math.random() * 9),
+        num2: Math.ceil(Math.random() * 9),
+        value: '',
+        result: '',
+      };
       onSubmit = (e) => {
         e.preventDefault();
         if (parseInt(this.state.value) === this.state.num1 * this.state.num2) {
-          this.setState((prevState) => {
+          this.setState((currentState) => {
             return {
-              result: prevState.value + ' 정답',
+              result: currentState.value + ' 정답',
               num1: Math.ceil(Math.random() * 9),
               num2: Math.ceil(Math.random() * 9),
               value: '',
