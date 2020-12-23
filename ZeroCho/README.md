@@ -19,3 +19,11 @@
 - 웹팩: 수많은 js파일들을 하나로 합쳐준다.
 - node는 서버가 아니라 JavaScript 실행기 그 이상 그 이하도 아니다.
 - 리액트를 할 때 node를 알아야 하는 이유는 웹팩을 사용해야 하는데 웹팩은 node로 실행하기 때문이다.
+
+### 3-10 shouldComponentUpdate
+
+- 성능 향상을 위해 shouldComponentUpdate, PureComponent, memo를 적절히 사용하자
+
+### 4-1 React 조건문
+
+- return 안에서 조건문을 사용해야할 때는 삼항연산자를 사용하면 된다.
