@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+.waiting,
+.ready,
+.now {
+  width: 300px;
+  height: 300px;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.waiting {
+  background-color: aquamarine;
+}
+
+.ready {
+  background-color: orange;
+}
+
+.now {
+  background-color: greenyellow;
+}
