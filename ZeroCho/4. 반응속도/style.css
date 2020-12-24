@@ -2,24 +2,23 @@
   box-sizing: border-box;
 }
 
-.waiting,
-.ready,
-.now {
+#screen {
   width: 300px;
   height: 300px;
   padding: 10px;
   text-align: center;
   font-weight: bold;
+  user-select: none;
 }
 
-.waiting {
+#screen.waiting {
   background-color: aquamarine;
 }
 
-.ready {
+#screen.ready {
   background-color: orange;
 }
 
-.now {
+#screen.now {
   background-color: greenyellow;
 }
