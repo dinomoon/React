@@ -31,3 +31,9 @@
 ### 4-4 반응속도체크 Hooks로 전환하기
 
 - 값이 바뀌어도 렌더링이 일어나지 않기를 원한다면 그 값은 useRef()를 사용한다.
+
+### 5-1 리액트 라이프사이클 소개
+
+- 클래스의 경우: constructor -> render -> ref -> componentDidMount ->
+- (state, props 변경될 때 -> shouldComponentUpdate(true) -> render ->componentDidUpdate ->)
+- (부모가 나를 없앴을 때 -> componentWillUnmount -> 소멸)
