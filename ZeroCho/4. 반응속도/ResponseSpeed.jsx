@@ -45,11 +45,28 @@ class ResponseSpeed extends Component {
     }
   }
 
+  onReset = () => {
+    this.setState({
+      result: [],
+    })
+  }
+
   renderAvg = () => {
     const {result} = this.state;
     return result.length === 0
       ? null
-      : <div>평균 시간: {result.reduce((a, c) => a + c) / result.length}ms</div>
+      : 
+      <>
+        <div>평균 시간: {result.reduce((a, c) => a + c) / result.length}ms</div>
+        <ol>
+          {result.map((v, i) => {
+            return (
+              <li>{result[i]}ms</li>  
+            )
+          })}
+        </ol>
+        <button onClick={this.onReset}>리셋</button>
+      </>
   }
 
   render() {

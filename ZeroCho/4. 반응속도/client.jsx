@@ -2,8 +2,8 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 
 import {hot} from 'react-hot-loader/root';
-import ResponseSpeed from'./ResponseSpeed';
+import ResponseSpeedHooks from'./ResponseSpeedHooks';
 
-const Hot = hot(ResponseSpeed)
+const Hot = hot(ResponseSpeedHooks)
 
 ReactDOM.render(<Hot/>, document.querySelector('#root'));
