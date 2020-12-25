@@ -21,6 +21,7 @@ const computerChoice = (imgCoord) => {
 
 class RSP extends PureComponent {
   state = {
+    mode: 'playing',
     result: '',
     imgCoord: '0',
     score: 0,
@@ -53,7 +54,15 @@ class RSP extends PureComponent {
     clearInterval(this.interval);
   }
 
-  onClickBtn = (choice) => {
+  onClickBtn = (choice) => () => {
+    const {mode} = this.state;
+    if (mode === 'stop') {
+      return;
+    } else if (mode === 'playing') {
+      this.setState({
+        mode: 'stop'
+      })
+    }
     clearInterval(this.interval);
     const {imgCoord} = this.state;
     const myScore = scores[choice];
@@ -80,6 +89,9 @@ class RSP extends PureComponent {
     }
     setTimeout(() => {
       this.interval = setInterval(this.changeHand, 100)
+      this.setState({
+        mode: 'playing'
+      })
     }, 2000);
   }
 
@@ -92,9 +104,9 @@ class RSP extends PureComponent {
           style={{ background: `url(https://en.pimg.jp/023/182/267/1/23182267.jpg) ${imgCoord} 0` }}
         />
         <div>
-          <button id="rock" className='btn' onClick={() => this.onClickBtn('바위')}>바위</button>
-          <button id="scissor" className='btn' onClick={() => this.onClickBtn('가위')}>가위</button>
-          <button id="paper" className='btn' onClick={() => this.onClickBtn('보')}>보</button>
+          <button id="rock" className='btn' onClick={this.onClickBtn('바위')}>바위</button>
+          <button id="scissor" className='btn' onClick={this.onClickBtn('가위')}>가위</button>
+          <button id="paper" className='btn' onClick={this.onClickBtn('보')}>보</button>
         </div>
         <div>{result}</div>
         <div>점수: {score}</div>

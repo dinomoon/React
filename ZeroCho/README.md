@@ -37,3 +37,7 @@
 - 클래스의 경우: constructor -> render -> ref -> componentDidMount ->
 - (state, props 변경될 때 -> shouldComponentUpdate(true) -> render ->componentDidUpdate ->)
 - (부모가 나를 없앴을 때 -> componentWillUnmount -> 소멸)
+
+### 5-6 클래스와 Hooks 라이프사이클 비교
+
+- 클래스에서는 componentDidMount, componentDidUpdate, componentWillUnmount를 사용하고, Hooks에서는 useEffect를 사용한다.
