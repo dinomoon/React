@@ -138,3 +138,36 @@ function Counter() {
 
 export default Counter;
 ```
+
+## 08. input 상태 관리하기
+
+- value에 state를 사용한다면 반드시 onChange를 사용해서 state를 관리해야한다.
+
+```jsx
+import React, { useState } from "react";
+
+function InputSample() {
+  const [text, setText] = useState("");
+
+  const onChange = (e) => {
+    setText(e.target.value);
+  };
+
+  const onReset = () => {
+    setText("");
+  };
+
+  return (
+    <div>
+      <input type="text" onChange={onChange} value={text} />
+      <button onClick={onReset}>초기화</button>
+      <div>
+        <b>값: </b>
+        {text}
+      </div>
+    </div>
+  );
+}
+
+export default InputSample;
+```
