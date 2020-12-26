@@ -237,3 +237,9 @@ function InputSample() {
 
 export default InputSample;
 ```
+
+## 10. useRef로 특정 DOM 선택하기
+
+- 특정 엘리먼트의 크기나 위치, 스크롤바 위치, 포커스 설정 등등 다양한 상황에서 useRef를 사용한다.
+- video 관련 라이브러리나, chart 관련 라이브러리를 사용할 때도 사용
+- 렌더링과 관련 없는 변수를 다룰 때 사용하기도 한다.
