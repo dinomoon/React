@@ -243,3 +243,52 @@ export default InputSample;
 - 특정 엘리먼트의 크기나 위치, 스크롤바 위치, 포커스 설정 등등 다양한 상황에서 useRef를 사용한다.
 - video 관련 라이브러리나, chart 관련 라이브러리를 사용할 때도 사용
 - 렌더링과 관련 없는 변수를 다룰 때 사용하기도 한다.
+
+## 11. 배열 렌더링하기
+
+- map함수를 사용하기
+- 반드시 key를 넣어줘야한다. (key가 있어야 효율적이다.)
+- key의 값은 index를 사용하는 것보다 고유한 값을 사용하는 것이 성능에 좋다. (수정과 삭제가 없이 추가만 하는 배열이라면 index를 사용해도 된다.)
+
+```jsx
+import React from "react";
+
+function User({ user }) {
+  return (
+    <div>
+      <b>{user.name}</b>
+      <span>({user.email})</span>
+    </div>
+  );
+}
+
+function UserList() {
+  const users = [
+    {
+      id: 1,
+      name: "mk",
+      email: "ansrud1003@naver.com",
+    },
+    {
+      id: 2,
+      name: "hj",
+      email: "heyjoo@google.com",
+    },
+    {
+      id: 3,
+      name: "fr",
+      email: "vhfl@google.com",
+    },
+  ];
+
+  return (
+    <div>
+      {users.map((user) => (
+        <User user={user} key={user.id} />
+      ))}
+    </div>
+  );
+}
+
+export default UserList;
+```

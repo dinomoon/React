@@ -1,9 +1,9 @@
 import './App.css';
-import InputSample from './10. useRef로 특정 DOM 선택하기/InputSample';
+import UserList from './11. 배열 렌더링하기/UserList';
 
 function App() {
   return (
-    <InputSample />
+    <UserList />
   );
 }
 
