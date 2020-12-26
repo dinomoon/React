@@ -292,3 +292,9 @@ function UserList() {
 
 export default UserList;
 ```
+
+## 12. useRef로 컴포넌트 안의 변수 만들기
+
+- let, const를 사용하면 값이 초기화 되고 state를 사용하면 렌더링 된다.
+- 렌더링 되었을 때, 초기화 되지 않고 재렌더링이 되지 않아도 되는 변수는 useRef를 사용해 만들 수 있다.
+- ex) setTimeout, setInterval의 id, 외부라이브러리를 사용하여 생성된 인스턴스, Scroll 위치 등등
