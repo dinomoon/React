@@ -298,3 +298,11 @@ export default UserList;
 - let, const를 사용하면 값이 초기화 되고 state를 사용하면 렌더링 된다.
 - 렌더링 되었을 때, 초기화 되지 않고 재렌더링이 되지 않아도 되는 변수는 useRef를 사용해 만들 수 있다.
 - ex) setTimeout, setInterval의 id, 외부라이브러리를 사용하여 생성된 인스턴스, Scroll 위치 등등
+
+## 13. 배열에 항목 추가하기
+
+- state를 업데이트할 때는 spread문법을 사용하거나 concat문법을 사용해서 불변성을 지켜줘야한다.
+
+## 14. 배열에 항목 제거하기
+
+- filter를 사용해서 골라내 삭제하기
