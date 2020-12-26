@@ -1,7 +1,7 @@
 import './App.css';
 import {useRef} from 'react';
-import UserList from './13. 배열에 항목 추가하기/UserList';
-import CreateUser from './13. 배열에 항목 추가하기/CreateUser';
+import CreateUser from './14. 배열에 항목 제거하기/CreateUser';
+import UserList from './14. 배열에 항목 제거하기/UserList';
 import { useState } from 'react';
 
 function App() {
@@ -55,6 +55,10 @@ function App() {
     nextId.current += 1;
   }
 
+  const onRemove = id => {
+    setUsers(users.filter(user => user.id !== id));
+  }
+
   return (
     <>
       <CreateUser
@@ -63,7 +67,7 @@ function App() {
         onChange={onChange} 
         onCreate={onCreate}
       />
-      <UserList users={users}/>
+      <UserList users={users} onRemove={onRemove}/>
     </>
   );
 }
