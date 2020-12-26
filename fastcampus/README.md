@@ -106,3 +106,35 @@ function App() {
   );
 }
 ```
+
+## 07. useState
+
+- 값을 업데이트 할 때, 함수형으로 할 수도 있고 값을 넣어줄 수도 있다.
+- 함수형으로 업데이트하는 것은 최적화와 관련이 있다. (뒤에서 배움)
+
+```jsx
+import React from "react";
+import { useState } from "react";
+
+function Counter() {
+  const [number, setNumber] = useState(0);
+
+  const onIncrease = () => {
+    setNumber((prevNumber) => prevNumber + 1);
+  };
+
+  const onDecrease = () => {
+    setNumber(number - 1);
+  };
+
+  return (
+    <div>
+      <h1>{number}</h1>
+      <button onClick={onIncrease}>+1</button>
+      <button onClick={onDecrease}>-1</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
