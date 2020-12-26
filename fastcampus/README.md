@@ -171,3 +171,69 @@ function InputSample() {
 
 export default InputSample;
 ```
+
+## 09. 여러개의 input 상태 관리하기
+
+- state를 객체로 만들어서 관리한다.
+
+```jsx
+import React, { useState } from "react";
+
+function InputSample() {
+  const [inputs, setInputs] = useState({ name: "", nickname: "" });
+
+  const { name, nickname } = inputs;
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+
+    // const nextInputs = {
+    //   ...inputs
+    // };
+    // nextInputs[name] = value;
+
+    // const nextInputs = {
+    //   ...inputs,
+    //   [name]: value,
+    // };
+
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const onReset = () => {
+    setInputs({
+      name: "",
+      nickname: "",
+    });
+  };
+
+  return (
+    <div>
+      <input
+        name="name"
+        type="text"
+        placeholder="이름"
+        onChange={onChange}
+        value={name}
+      />
+      <input
+        name="nickname"
+        type="text"
+        placeholder="닉네임"
+        onChange={onChange}
+        value={nickname}
+      />
+      <button onClick={onReset}>초기화</button>
+      <div>
+        <b>값: </b>
+        {name} ({nickname})
+      </div>
+    </div>
+  );
+}
+
+export default InputSample;
+```

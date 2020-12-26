@@ -1,5 +1,5 @@
 import './App.css';
-import InputSample from './08. input 상태 관리하기/InputSample';
+import InputSample from './09. 여러개의 input 상태 관리하기/InputSample';
 
 function App() {
   return (
