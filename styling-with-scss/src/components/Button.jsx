@@ -1,14 +1,15 @@
 import React from 'react';
 import './Button.scss'
 
-function Button({children, size}) {
+function Button({children, size, color}) {
   return (
-    <button className={['Button', size].join(' ')}>{children}</button>
+    <button className={['Button', size, color].join(' ')}>{children}</button>
   );
 }
 
 Button.defaultProps = {
-  size: 'medium'
+  size: 'medium',
+  color: 'blue'
 }
 
 export default Button;

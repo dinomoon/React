@@ -1,4 +1,16 @@
 $blue: #228be6; //주석
+$gray: #495057;
+$pink: #f06595;
+
+@mixin button-color($color) {
+  background-color: $color;
+  &:hover {
+    background-color: lighten($color, 10%);
+  }
+  &:active {
+    background-color: darken($color, 10%);
+  }
+}
 
 .Button {
   display: inline-flex;
@@ -28,12 +40,16 @@ $blue: #228be6; //주석
     font-size: 0.875rem;
   }
 
-  background-color: $blue;
-  &:hover {
-    background-color: lighten($blue, 10%);
+  &.blue {
+    @include button-color($blue);
   }
-  &:active {
-    background-color: darken($blue, 10%);
+
+  &.gray {
+    @include button-color($gray);
+  }
+
+  &.pink {
+    @include button-color($pink);
   }
 
   & + & {
