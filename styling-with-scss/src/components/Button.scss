@@ -1,0 +1,42 @@
+$blue: #228be6; //주석
+
+.Button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  padding: 0 1rem;
+
+  &.large {
+    height: 3rem;
+    font-size: 1.25rem;
+  }
+
+  &.medium {
+    height: 2.25rem;
+    font-size: 1rem;
+  }
+
+  &.small {
+    height: 1.75rem;
+    font-size: 0.875rem;
+  }
+
+  background-color: $blue;
+  &:hover {
+    background-color: lighten($blue, 10%);
+  }
+  &:active {
+    background-color: darken($blue, 10%);
+  }
+
+  & + & {
+    margin-left: 1rem;
+  }
+}
