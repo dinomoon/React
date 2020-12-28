@@ -19,6 +19,9 @@ $pink: #f06595;
       background: $color;
       color: #fff;
     }
+    &:active {
+      background-color: darken($color, 10%);
+    }
   }
 }
 
