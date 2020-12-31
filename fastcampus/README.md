@@ -28,7 +28,7 @@ function Hello({ name, color }) {
 
 ```jsx
 Hello.defaultProps = {
-  name: "이름없음",
+  name: '이름없음',
 };
 ```
 
@@ -37,7 +37,7 @@ Hello.defaultProps = {
 ```jsx
 function Wrapper({ children }) {
   const style = {
-    border: "4px solid black",
+    border: '4px solid black',
     padding: 16,
   };
 
@@ -46,9 +46,9 @@ function Wrapper({ children }) {
 
 export default Wrapper;
 
-import "./App.css";
-import Hello from "./05. props/Hello";
-import Wrapper from "./05. props/Wrapper";
+import './App.css';
+import Hello from './05. props/Hello';
+import Wrapper from './05. props/Wrapper';
 
 function App() {
   return (
@@ -113,8 +113,8 @@ function App() {
 - 함수형으로 업데이트하는 것은 최적화와 관련이 있다. (뒤에서 배움)
 
 ```jsx
-import React from "react";
-import { useState } from "react";
+import React from 'react';
+import { useState } from 'react';
 
 function Counter() {
   const [number, setNumber] = useState(0);
@@ -144,17 +144,17 @@ export default Counter;
 - value에 state를 사용한다면 반드시 onChange를 사용해서 state를 관리해야한다.
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 function InputSample() {
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
 
   const onChange = (e) => {
     setText(e.target.value);
   };
 
   const onReset = () => {
-    setText("");
+    setText('');
   };
 
   return (
@@ -177,10 +177,10 @@ export default InputSample;
 - state를 객체로 만들어서 관리한다.
 
 ```jsx
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 function InputSample() {
-  const [inputs, setInputs] = useState({ name: "", nickname: "" });
+  const [inputs, setInputs] = useState({ name: '', nickname: '' });
 
   const { name, nickname } = inputs;
 
@@ -205,8 +205,8 @@ function InputSample() {
 
   const onReset = () => {
     setInputs({
-      name: "",
-      nickname: "",
+      name: '',
+      nickname: '',
     });
   };
 
@@ -251,7 +251,7 @@ export default InputSample;
 - key의 값은 index를 사용하는 것보다 고유한 값을 사용하는 것이 성능에 좋다. (수정과 삭제가 없이 추가만 하는 배열이라면 index를 사용해도 된다.)
 
 ```jsx
-import React from "react";
+import React from 'react';
 
 function User({ user }) {
   return (
@@ -266,18 +266,18 @@ function UserList() {
   const users = [
     {
       id: 1,
-      name: "mk",
-      email: "ansrud1003@naver.com",
+      name: 'mk',
+      email: 'ansrud1003@naver.com',
     },
     {
       id: 2,
-      name: "hj",
-      email: "heyjoo@google.com",
+      name: 'hj',
+      email: 'heyjoo@google.com',
     },
     {
       id: 3,
-      name: "fr",
-      email: "vhfl@google.com",
+      name: 'fr',
+      email: 'vhfl@google.com',
     },
   ];
 
@@ -310,3 +310,7 @@ export default UserList;
 ## 15. 배열에 항목 수정하기
 
 - map을 사용해서 특정 항목을 선택가능
+
+## 16. useEffect를 사용하여 마운트, 언마운트, 업데이트시 할 작업 설정하기
+
+- useEffect를 사용하면 컴포넌트가 화면에 나타나게 될 때, 사라지게 될 때, props나 state가 바뀌어서 업데이트 될 때, 업데이트 되기 직전, 리렌더링 될 때마다 원하는 작업을 등록할 수 있다.

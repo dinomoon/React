@@ -1,4 +1,3 @@
-import './App.css';
 import {useRef} from 'react';
 import CreateUser from './15. 배열에 항목 수정하기/CreateUser';
 import UserList from './15. 배열에 항목 수정하기/UserList';
