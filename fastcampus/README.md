@@ -314,3 +314,11 @@ export default UserList;
 ## 16. useEffect를 사용하여 마운트, 언마운트, 업데이트시 할 작업 설정하기
 
 - useEffect를 사용하면 컴포넌트가 화면에 나타나게 될 때, 사라지게 될 때, props나 state가 바뀌어서 업데이트 될 때, 업데이트 되기 직전, 리렌더링 될 때마다 원하는 작업을 등록할 수 있다.
+
+## 17. useMemo를 사용하여 연산한 값 재사용하기
+
+- 컴포넌트의 성능을 최적화할 때 사용한다.
+
+```jsx
+const count = useMemo(() => countActiveUsers(users), [users]);
+```
