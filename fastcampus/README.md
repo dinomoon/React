@@ -375,3 +375,22 @@ const onIncrease = () => {
 
 - useReducer vs useState
 - 정답은 없다. 상황에 따라 다르게 사용하자. (복잡-> useReducer, 단순->useState)
+
+## 22. 커스텀 Hook 만들어서 사용하기
+
+```jsx
+import { useState, useCallback } from 'react';
+
+function useInputs(initialForm) {
+  const [form, setForm] = useState(initialForm);
+  const onChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setForm((form) => ({ ...form, [name]: value }));
+  }, []);
+  const reset = useCallback(() => setForm(initialForm), [initialForm]);
+
+  return [form, onChange, reset];
+}
+
+export default useInputs;
+```
