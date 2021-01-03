@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useReducer } from 'react';
+import { useReducer } from 'react';
 
 function reducer(state, action) {
   switch (action.type) {

@@ -394,3 +394,38 @@ function useInputs(initialForm) {
 
 export default useInputs;
 ```
+
+## 23. Context API를 사용한 전역 값 관리
+
+- props를 전달하지 않아도 바로 사용할 수 있게 해줌
+
+```jsx
+import React, { createContext, useContext } from 'react';
+import { useState } from 'react';
+
+const MyContext = createContext('기본값');
+
+function Child() {
+  const text = useContext(MyContext);
+  return <div>안녕하세요? {text}</div>;
+}
+
+function Prent() {
+  return <Child />;
+}
+function GrandParent() {
+  return <Prent />;
+}
+function ContextSample() {
+  const [value, setValue] = useState(true);
+
+  return (
+    <MyContext.Provider value={value ? 'GOOD' : 'BAD'}>
+      <GrandParent />
+      <button onClick={() => setValue(!value)}>CLICK ME</button>
+    </MyContext.Provider>
+  );
+}
+
+export default ContextSample;
+```
