@@ -49,7 +49,7 @@ function App() {
   const nextId = useRef(4);
 
   const onCreate = useCallback(() => {
-    setUsers([
+    setUsers(users => [
       ...users,
       {
         id: nextId.current,
@@ -62,19 +62,19 @@ function App() {
       email: ''
     })
     nextId.current += 1;
-  }, [username, email, users]);
+  }, [username, email]);
 
   const onRemove = useCallback(id => {
-    setUsers(users.filter(user => user.id !== id));
-  }, [users]);
+    setUsers(users => users.filter(user => user.id !== id));
+  }, []);
 
   const onToggle = useCallback(id => {
-    setUsers(users.map(
+    setUsers(users => users.map(
       user => user.id === id
       ? {...user, active: !user.active}
       : user
     ))
-  }, [users]);
+  }, []);
 
   const count = useMemo(() => countActiveUsers(users), [users]);
 

@@ -326,3 +326,13 @@ const count = useMemo(() => countActiveUsers(users), [users]);
 ## 18. useCallback을 사용하여 함수 재사용하기
 
 - useMemo랑 비슷한 것인데, 함수를 재사용할 수 있게 해준다. (deps의 값이 변할 때만 함수를 다시 실행시킴)
+
+## 19. React.memo를 사용한 컴포넌트 리렌더링 방지
+
+- React.memo를 사용하면 props가 바뀌었을 때만 리렌더링을 해준다.
+
+```jsx
+export default React.memo(CreateUser);
+
+const User = React.memo(function User({ user, onRemove, onToggle }) {});
+```
