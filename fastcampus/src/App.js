@@ -1,11 +1,7 @@
-import {useRef} from 'react';
+import React, {useRef, useMemo, useCallback, useReducer, createContext} from 'react';
 import CreateUser from './15. 배열에 항목 수정하기/CreateUser';
 import UserList from './15. 배열에 항목 수정하기/UserList';
 import useInputs from './useInputs';
-import { useState } from 'react';
-import { useMemo } from 'react';
-import { useCallback } from 'react';
-import { useReducer } from 'react';
 
 function countActiveUsers(users) {
   console.log("활성 사용자 수를 세는 중...");
@@ -73,13 +69,15 @@ function reducer(state, action) {
   }
 }
 
+export const UserDispatch = createContext(null);
+
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [form, onChange, reset] = useInputs({username: '', email: ''})
-  const nextId = useRef(4);
+  // const [form, onChange, reset] = useInputs({username: '', email: ''})
+  // const nextId = useRef(4);
   const { users } = state;
   // const { username, email } = state.inputs;
-  const { username, email } = form;
+  // const { username, email } = form;
 
   // const onChange = useCallback(e => {
   //   const { name, value } = e.target;
@@ -90,48 +88,29 @@ function App() {
   //   })
   // }, [])
 
-  const onCreate = useCallback(() => {
-    dispatch({
-      type: 'CREATE_USER',
-      user: {
-        id: nextId.current,
-        username,
-        email,
-      }
-    });
-    nextId.current += 1;
-    reset();
-  }, [username, email, reset])
-
-  const onToggle = useCallback(id => {
-    dispatch({
-      type: 'TOGGLE_USER',
-      id
-    })
-  }, []);
-
-  const onRemove = useCallback(id => {
-    dispatch({
-      type: 'REMOVE_USER',
-      id
-    })
-  }, [])
+  // const onCreate = useCallback(() => {
+  //   dispatch({
+  //     type: 'CREATE_USER',
+  //     user: {
+  //       id: nextId.current,
+  //       username,
+  //       email,
+  //     }
+  //   });
+  //   nextId.current += 1;
+  //   reset();
+  // }, [username, email, reset])
 
   const count = useMemo(() => countActiveUsers(users), [users]);
 
   return (
-    <>
-      <CreateUser
-        username={username}
-        email={email}
-        onChange={onChange}
-        onCreate={onCreate}
-      />
-      <UserList users={users} onToggle={onToggle} onRemove={onRemove} />
+    <UserDispatch.Provider value={dispatch}>
+      <CreateUser />
+      <UserList users={users} />
       <div>
         활성 사용자 수: {count}
       </div>
-    </>
+    </UserDispatch.Provider>
   );
 }
 

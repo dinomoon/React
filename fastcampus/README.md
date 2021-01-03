@@ -429,3 +429,15 @@ function ContextSample() {
 
 export default ContextSample;
 ```
+
+## 24. UserDispatch Context 만들기
+
+```jsx
+return (
+  <UserDispatch.Provider value={dispatch}>
+    <CreateUser />
+    <UserList users={users} />
+    <div>활성 사용자 수: {count}</div>
+  </UserDispatch.Provider>
+);
+```
