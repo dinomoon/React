@@ -370,3 +370,8 @@ const onIncrease = () => {
     })
   }
 ```
+
+## 21. useReducer - App에서 useReducer 사용하기
+
+- useReducer vs useState
+- 정답은 없다. 상황에 따라 다르게 사용하자. (복잡-> useReducer, 단순->useState)
