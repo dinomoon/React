@@ -322,3 +322,7 @@ export default UserList;
 ```jsx
 const count = useMemo(() => countActiveUsers(users), [users]);
 ```
+
+## 18. useCallback을 사용하여 함수 재사용하기
+
+- useMemo랑 비슷한 것인데, 함수를 재사용할 수 있게 해준다. (deps의 값이 변할 때만 함수를 다시 실행시킴)

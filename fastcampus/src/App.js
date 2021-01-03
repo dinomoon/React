@@ -3,6 +3,7 @@ import CreateUser from './15. 배열에 항목 수정하기/CreateUser';
 import UserList from './15. 배열에 항목 수정하기/UserList';
 import { useState } from 'react';
 import { useMemo } from 'react';
+import { useCallback } from 'react';
 
 function countActiveUsers(users) {
   console.log("활성 사용자 수를 세는 중...");
@@ -37,17 +38,17 @@ function App() {
   ]);
 
   const { username, email } = inputs;
-  const onChange = (e) => {
+  const onChange = useCallback((e) => {
     const { name, value } = e.target;
     setInputs({
       ...inputs,
       [name]: value,
     })
-  }
+  }, [inputs])
 
   const nextId = useRef(4);
 
-  const onCreate = () => {
+  const onCreate = useCallback(() => {
     setUsers([
       ...users,
       {
@@ -61,19 +62,19 @@ function App() {
       email: ''
     })
     nextId.current += 1;
-  }
+  }, [username, email, users]);
 
-  const onRemove = id => {
+  const onRemove = useCallback(id => {
     setUsers(users.filter(user => user.id !== id));
-  }
+  }, [users]);
 
-  const onToggle = id => {
+  const onToggle = useCallback(id => {
     setUsers(users.map(
       user => user.id === id
       ? {...user, active: !user.active}
       : user
     ))
-  }
+  }, [users]);
 
   const count = useMemo(() => countActiveUsers(users), [users]);
 
