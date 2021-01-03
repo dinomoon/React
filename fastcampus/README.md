@@ -336,3 +336,37 @@ export default React.memo(CreateUser);
 
 const User = React.memo(function User({ user, onRemove, onToggle }) {});
 ```
+
+## 20. useReducer - 기초
+
+- useReducer를 통해서도 useState처럼 상태를 설정할 수 있다.
+- useReducer는 액션이라는 객체를 기반으로 상태를 업데이트한다.
+- useReducer를 사용하면 상태 업데이트 로직을 컴포넌트 밖으로 분리 가능
+- reducer: 상태를 업데이트하는 함수
+
+```jsx
+function reducer(state, action) {
+  switch (action.type) {
+    case: 'INCREMENT':
+      return state + 1;
+    case: 'DECREMENT':
+      return state - 1;
+    default:
+      throw new Error('Unhandled action');
+  }
+}
+
+const [number, dispatch] = useReducer(reducer, 0);
+
+const onIncrease = () => {
+    dispatch({
+      type: 'INCREMENT'
+    })
+  }
+
+  const onDecrease = () => {
+    dispatch({
+      type: 'DECREMENT'
+    })
+  }
+```
