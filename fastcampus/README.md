@@ -455,3 +455,21 @@ const nextState = produce(state, (draft) => {
   draft.number += 1;
 });
 ```
+
+## 26. 리듀서 Immer로 구현하기
+
+- 상태가 복잡해서 변경이 어려울 때 사용하면 좋다. 필수 라이브러리는 아니다.
+- 첫 번째 인자인 state를 넣지 않고 함수만 넣으면 updater함수를 얻을 수 있다.
+
+```jsx
+const todo = {
+  text: 'Hello',
+  done: false,
+};
+
+const updater = produce((draft) => {
+  draft.done = !draft.done;
+});
+
+const nextTodo = updater(todo);
+```
