@@ -169,3 +169,8 @@ export default Box;
 
 - scss에서도 사용가능
 - global 클래스 네임을 선언하고 싶다? :global
+
+## 07. Styled components
+
+- css in js
+- Tagged Template Literal
