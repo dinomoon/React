@@ -2,6 +2,9 @@ import React, {useRef, useMemo, useCallback, useReducer, createContext} from 're
 import CreateUser from './15. 배열에 항목 수정하기/CreateUser';
 import UserList from './15. 배열에 항목 수정하기/UserList';
 import useInputs from './useInputs';
+import produce from 'immer';
+
+window.produce = produce;
 
 function countActiveUsers(users) {
   console.log("활성 사용자 수를 세는 중...");

@@ -441,3 +441,17 @@ return (
   </UserDispatch.Provider>
 );
 ```
+
+## 25. Immer를 사용한 더 쉬운 불변성 지키기
+
+- immer를 사용하면 불변성을 해치는 코드를 작성해도 불변성 유지를 해준다.
+- 첫 번째 인자에는 기존의 상태, 두 번째 인자에는 함수를 넣어준다. (어떻게 바꿀 것인지 단, 함수의 인자는 draft)
+
+```jsx
+import produce from 'immer';
+
+const state = { number: 1 };
+const nextState = produce(state, (draft) => {
+  draft.number += 1;
+});
+```
