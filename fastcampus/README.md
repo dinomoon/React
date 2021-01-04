@@ -473,3 +473,17 @@ const updater = produce((draft) => {
 
 const nextTodo = updater(todo);
 ```
+
+## 27. 클래스형 컴포넌트 소개
+
+- 원래 리액트에서는 클래스형 컴포넌트를 사용했지만, Hooks가 생기면서 지금은 함수형 컴포넌트를 사용한다.
+
+## 28. 클래스형 컴포넌트의 state와 setState
+
+- 한 메서드에서 setState를 사용해 상태를 여러 번 업데이트해야 할 상황이 생기면 함수형으로 업데이트 해줘야 한다. (비동기이기 때문에...)
+
+## 29. LifeCycle 메서드
+
+## 30. componentDidCatch 메서드
+
+## 31. componentDidCatch와 Sentry 연동
