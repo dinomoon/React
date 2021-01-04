@@ -146,3 +146,26 @@ function App() {
 
 export default App;
 ```
+
+## 06. CSS Module
+
+- CSS Module을 사용하면 클래스 이름이 중복되는 것을 방지할 수 있다.
+
+```jsx
+import React from "react";
+import styles from "./Box.module.css";
+
+function Box() {
+  return <div className={styles.Box}>{styles.Box}</div>;
+}
+
+export default Box;
+```
+
+- 사용하는 경우
+
+  1. 레거시 프로젝트에 리액트를 도입할 때
+  2. CSS 클래스 네이밍 규칙 만들기 귀찮을 때
+
+- scss에서도 사용가능
+- global 클래스 네임을 선언하고 싶다? :global
