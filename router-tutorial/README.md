@@ -1,70 +1,144 @@
-# Getting Started with Create React App
+## 01. 프로젝트 준비 및 기본적인 사용법
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- react-router-dom 설치
+- App컴포넌트를 BrowserRouter로 감싸주기
 
-## Available Scripts
+```jsx
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 
-In the project directory, you can run:
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);
+```
 
-### `yarn start`
+- Link와 Route 사용하기
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```jsx
+import React from "react";
+import { Route, Link } from "react-router-dom";
+import About from "./About";
+import Home from "./Home";
+import Profile from "./Profile";
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+function App() {
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to="/">홈</Link>
+        </li>
+        <li>
+          <Link to="/about">소개</Link>
+        </li>
+      </ul>
+      <hr />
+      <Route path="/" component={Home} exact></Route>
+      <Route path="/about" component={About}></Route>
+    </div>
+  );
+}
 
-### `yarn test`
+export default App;
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 02. 파라미터와 쿼리
 
-### `yarn build`
+- 파라미터
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```jsx
+// App.js
+import React from "react";
+import { Route, Link } from "react-router-dom";
+import About from "./About";
+import Home from "./Home";
+import Profile from "./Profile";
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+function App() {
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to="/">홈</Link>
+        </li>
+        <li>
+          <Link to="/about">소개</Link>
+        </li>
+      </ul>
+      <hr />
+      <Route path="/" component={Home} exact></Route>
+      <Route path="/about" component={About}></Route>
+      <Route path="/profile/:username" component={Profile}></Route>
+    </div>
+  );
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export default App;
+```
 
-### `yarn eject`
+```jsx
+// Profile.jsx
+import React from "react";
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+const profileData = {
+  velopert: {
+    name: "김민준",
+    description: "Frontend Engineer",
+  },
+  homer: {
+    name: "호머 심슨",
+    description: "심슨 가족에 나오는 아빠 역할 캐릭터",
+  },
+};
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+function Profile({ match }) {
+  const { username } = match.params;
+  const profile = profileData[username];
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  if (!profile) {
+    return <div>존재하지 않는 사용자입니다.</div>;
+  }
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  return (
+    <div>
+      <h3>
+        {username} ({profile.name})
+      </h3>
+      <p>{profile.description}</p>
+    </div>
+  );
+}
 
-## Learn More
+export default Profile;
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- 쿼리
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```jsx
+// About.jsx
+import React from "react";
+import qs from "qs";
 
-### Code Splitting
+function About({ location }) {
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  });
+  const detail = query.detail === "true";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  return (
+    <div>
+      <h1>소개</h1>
+      <p>이 프로젝트는 리액트 라우터 기초를 실습해보는 예제 페이지입니다.</p>
+      {detail && <p>detail값이 true입니다!</p>}
+    </div>
+  );
+}
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default About;
+```
