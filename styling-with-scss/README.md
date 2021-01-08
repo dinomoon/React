@@ -174,3 +174,22 @@ export default Box;
 
 - css in js
 - Tagged Template Literal
+- 컴포넌트 안에 직접 스타일 작성 가능
+
+```jsx
+import React from "react";
+import styled from "styled-components";
+
+const Circle = styled.div`
+  width: 5rem;
+  height: 5rem;
+  background: black;
+  border-radius: 50%;
+`;
+
+function App() {
+  return <Circle />;
+}
+
+export default App;
+```
