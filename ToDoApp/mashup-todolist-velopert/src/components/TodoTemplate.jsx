@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const TodoTemplateBlock = styled.div`
   width: 512px;
@@ -17,7 +17,7 @@ const TodoTemplateBlock = styled.div`
 `;
 
 function TodoTemplate({ children }) {
-  return <TodoTemplateBlock>{children}</TodoTemplateBlock>
+  return <TodoTemplateBlock>{children}</TodoTemplateBlock>;
 }
 
-export default TodoTemplate
+export default TodoTemplate;

@@ -1,8 +1,8 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
-import { MdAdd } from 'react-icons/md';
-import { useState } from 'react';
-import { useTodoDispatch, useTodoNextId } from '../TodoContext';
+import React from "react";
+import styled, { css } from "styled-components";
+import { MdAdd } from "react-icons/md";
+import { useState } from "react";
+import { useTodoDispatch, useTodoNextId } from "../TodoContext";
 
 const CircleButton = styled.button`
   background: #38d9a9;
@@ -34,7 +34,7 @@ const CircleButton = styled.button`
   justify-content: center;
 
   transition: 0.125s all ease-in;
-  ${props =>
+  ${(props) =>
     props.open &&
     css`
       background: #ff6b6b;
@@ -74,10 +74,9 @@ const Input = styled.input`
   box-sizing: border-box;
 `;
 
-
 function TodoCreate() {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const dispatch = useTodoDispatch();
   const nextId = useTodoNextId();
 
@@ -86,17 +85,17 @@ function TodoCreate() {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch({
-      type: 'CREATE',
+      type: "CREATE",
       todo: {
         id: nextId.current,
         text: value,
         done: false,
-      }
+      },
     });
-    setValue('');
+    setValue("");
     setOpen(false);
     nextId.current += 1;
-  }
+  };
 
   return (
     <>
