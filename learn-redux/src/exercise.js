@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { createStore } from 'redux';
 
 const initialState = {
@@ -30,6 +32,7 @@ const addToList = (item) => ({
   item,
 });
 
+// Reducer
 function reducer(state = initialState, action) {
   switch (action.type) {
     case 'INCREASE':
