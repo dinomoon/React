@@ -25,10 +25,18 @@ function Hello({ name, color }) {
 ```
 
 - defaultProps를 사용해 기본값을 설정할 수 있다.
+- propTypes를 사용해 타입을 정할 수 있다.
+- isRequired를 사용해 필수로 작성해야하는 타입을 정할 수 있다.
 
 ```jsx
 Hello.defaultProps = {
   name: '이름없음',
+};
+
+import PropTypes from 'prop-types';
+
+Hello.propTypes = {
+  name: PropTypes.string.isRequired,
 };
 ```
 
