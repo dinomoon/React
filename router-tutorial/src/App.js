@@ -14,11 +14,17 @@ function App() {
         <li>
           <Link to="/about">소개</Link>
         </li>
+        <li>
+          <Link to="/profile/velopert">velopert 프로필</Link>
+        </li>
+        <li>
+          <Link to="/profile/homer">homer 프로필</Link>
+        </li>
       </ul>
-      <hr/>
-      <Route path="/" component={Home} exact></Route>
-      <Route path="/about" component={About}></Route>
-      <Route path="/profile/:username" component={Profile}></Route>
+      <hr />
+      <Route path="/" component={Home} exact />
+      <Route path={['/about', '/info']} component={About} />
+      <Route path="/profile/:username" component={Profile} />
     </div>
   );
 }
