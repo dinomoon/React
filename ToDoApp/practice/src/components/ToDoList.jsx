@@ -1,16 +1,13 @@
 import React from 'react';
 import './ToDoList.css';
-import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
+import ToDoListItem from './ToDoListItem';
 
-function ToDoList({ todos }) {
+function ToDoList({ todos, onToggle, onRemove }) {
   return (
     <div>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
-            {todo.com ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-            {todo.text}
-          </li>
+          <ToDoListItem key={todo.id} todo={todo} onToggle={onToggle} onRemove={onRemove} />
         ))}
       </ul>
     </div>

@@ -4,7 +4,7 @@ import './ToDoTemplate.css';
 function ToDoTemplate({ children }) {
   return (
     <div className="container">
-      <div className="header">To do App</div>
+      <h1 className="header">To do App</h1>
       <div>{children}</div>
     </div>
   );

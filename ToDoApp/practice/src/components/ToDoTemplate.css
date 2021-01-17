@@ -4,7 +4,6 @@ body {
 
 .container {
   width: 500px;
-  height: 800px;
   margin: 40px auto;
   background-color: #fff;
 }
@@ -15,5 +14,5 @@ body {
   justify-content: center;
   background-color: #ff8787;
   color: #fff;
-  height: 50px;
+  padding: 20px;
 }

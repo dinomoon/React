@@ -1,0 +1,16 @@
+li {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 1.4rem;
+}
+
+li span {
+  flex: 1;
+  margin-left: 10px;
+}
+
+li.com {
+  color: #ced4da;
+  text-decoration: line-through;
+}
