@@ -48,9 +48,9 @@ function App() {
 export default App;
 ```
 
-## 02. 파라미터와 쿼리
+## 02. URL 파라미터와 Query 파라미터
 
-- 파라미터
+- URL 파라미터
 
 ```jsx
 // App.js
@@ -121,7 +121,7 @@ function Profile({ match }) {
 export default Profile;
 ```
 
-- 쿼리
+- Query 파라미터
 
 ```jsx
 // About.jsx
