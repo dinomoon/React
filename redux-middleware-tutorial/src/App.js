@@ -1,10 +1,10 @@
 import React from 'react';
-import SampleContainer from './containers/SampleContainer';
+import PostListContainer from './containers/PostListContainer';
 
 const App = () => {
   return (
     <div>
-      <SampleContainer />
+      <PostListContainer />
     </div>
   );
 };
